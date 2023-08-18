@@ -2,13 +2,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+gasolina_df = pd.read_csv("gasolina.csv")
+gasolina_df.rename(columns={'dia': 'Dias', 'venda' : 'Preços'}, inplace=True)
 
-df_gasolina = pd.read_csv("gasolina.csv")
-df_gasolina.rename(columns={'dia': 'Dias', 'venda': 'Preços'}, inplace=True)
 
-
-graf_linha = sns.lineplot(data=df_gasolina, x="Dias", y="Preços", marker='o', markerfacecolor='black', markeredgecolor='black')
-graf_linha.lines[0].set_color("red")
-graf_linha.set_title("Preço da gasolina ao decorrer de 10 dias")
+grafico_linha = sns.lineplot(data=gasolina_df, x="Dias", y="Preços", marker='X', markerfacecolor='red', markeredgecolor='red')
+grafico_linha.set_title("Preço da gasolina ao longo de 10 dias em São Paulo")
 plt.savefig("gasolina.png")
 plt.show()
